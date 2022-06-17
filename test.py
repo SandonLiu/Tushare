@@ -6,7 +6,7 @@ import pandas as pd
 class MySQLUtil:
     def df_write_mysql(data):
         schema = 'chinastock'
-        table = 'dailyfromtushare'
+        table = 'test'
         engine = create_engine('mysql+pymysql://root:password@localhost:3306/' + schema + '?charset=utf8')
         pd.io.sql.to_sql(data, table, engine, if_exists='append', index=False)
         print("write into mysql finish")
@@ -22,13 +22,14 @@ def main():
     pro = ts.pro_api()
 
     # 数据调取
-    df = pro.daily(ts_code='000001.SZ', start_date='20180701', end_date='20180718')
+    dataFrame = pro.query('trade_cal', exchange='', start_date='20180901', end_date='20181001',
+                          fields='exchange,cal_date,is_open,pretrade_date', is_open='0')
 
     # 打印数据
-    print(df)
+    print(dataFrame)
 
     # 写入MySQL
-    MySQLUtil.df_write_mysql(df)
+    MySQLUtil.df_write_mysql(dataFrame)
 
 
 # 主程序入口
