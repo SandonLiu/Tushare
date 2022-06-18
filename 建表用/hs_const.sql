@@ -4,5 +4,7 @@ CREATE TABLE `hs_const` (
   `in_date` varchar(45) DEFAULT NULL COMMENT '纳入日期',
   `out_date` varchar(45) DEFAULT NULL COMMENT '剔除日期',
   `is_new` varchar(45) DEFAULT NULL COMMENT '是否最新 1是 0否',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  COMMENT '更新时间',
   PRIMARY KEY (`ts_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) 

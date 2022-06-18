@@ -15,5 +15,7 @@ CREATE TABLE `stock_company` (
   `employees` int DEFAULT NULL COMMENT '员工人数',
   `main_business` varchar(45) DEFAULT NULL COMMENT '主要业务及产品',
   `business_scope` varchar(45) DEFAULT NULL COMMENT '经营范围',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  COMMENT '更新时间',
   PRIMARY KEY (`ts_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) 
